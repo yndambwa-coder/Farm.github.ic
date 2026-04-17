@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>CHIFWEMA FARM </title>
+    <title>CHIFWEMA FARM | Sustainable Agriculture</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -31,7 +30,6 @@
             color: var(--dark-gray);
             line-height: 1.6;
         }
-	
 
         .container {
             max-width: 1200px;
@@ -106,28 +104,57 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
+        /* Hero Section with SEE-THROUGH BACKGROUND IMAGE */
         .hero {
-            background: linear-gradient(rgba(46, 125, 50, 0.9), rgba(46, 125, 50, 0.8)), url('cabbage.jpeg');
-            background-size: cover;
-            background-position: center;
+            /* Using multiple backgrounds: 
+               - A semi-transparent gradient overlay (rgba with opacity)
+               - The background image with opacity effect via background-blend-mode and transparency
+               This creates a "see-through" effect where the image is softly visible behind the text */
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.85), rgba(27, 94, 32, 0.9)), 
+                        url('cabbage.jpeg');
+            background-size: cover, cover;
+            background-position: center, center;
+            background-blend-mode: overlay; /* Soft blending for see-through feel */
             color: var(--white);
             text-align: center;
             padding: 100px 20px;
             border-radius: 0 0 30px 30px;
             margin-bottom: 60px;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Alternative approach: If image doesn't load or for better transparency,
+           we also add a subtle semi-transparent overlay that lets the image "peek through" 
+           while keeping text readable. The image itself is semi-visible */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.15); /* extra dark veil, but image still see-through */
+            border-radius: 0 0 30px 30px;
+            pointer-events: none;
+        }
+
+        .hero h1, .hero p, .hero .cta-button {
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
         }
 
         .hero p {
             font-size: 1.3rem;
             max-width: 800px;
             margin: 0 auto 30px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
         }
 
         .cta-button {
@@ -575,7 +602,7 @@
         <div class="container header-container">
             <div class="logo">
                 <i class="fas fa-tractor logo-icon"></i>
-		<img src="IMG-20251210-WA0004.jpg" alt="Chifwema farm logo" width="100" height"70">		
+                <img src="IMG-20251210-WA0004.jpg" alt="Chifwema farm logo" width="100" height="70" style="border-radius: 12px;">		
                 <span class="logo-text">Chifwema Farm</span>
             </div>
             
@@ -593,185 +620,121 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with SEE-THROUGH background image (semi-transparent blend) -->
     <section class="hero" id="home">
         <div class="container">
-		
             <h1>Welcome to Chifwema Farm Website</h1>
             <p>A sustainable, family owned farm showcasing the beauty of agricultural life. Explore our animals, crops, and the natural harmony of farm living.</p>
             <a href="#showcase" class="cta-button">Explore Our Farm</a>
         </div>
     </section>
-    <marquee>This website is under Construction.</marquee>
+    <marquee behavior="scroll" direction="left" style="background: var(--pale-green); padding: 10px; color: var(--primary-green); font-weight: bold;">🌱 This website is under construction — more features coming soon! 🌾</marquee>
 
     <section class="container" id="showcase">
         <h2 class="section-title">Farm Showcase</h2>
         <div class="farm-categories">
             <!-- Sheep -->
             <div class="category-card" data-animal="sheep">
-                <div class="category-icon">
-                    <i class="fas fa-cloud"></i>
-                </div>
+                <div class="category-icon"><i class="fas fa-cloud"></i></div>
                 <img src="photo-1595543090343-57fbf1762ab1.jpeg" alt="Sheep at Chifwema Farm">
                 <div class="category-content">
                     <h3>Sheep</h3>
                     <p>Our flock of 20 local indigenous Zambian sheep graze freely across our lush pastures, producing high quality meat and lamb.</p>
-                    <div class="category-stats">
-                        <span><i class="fas fa-sheep"></i> 20 Sheep</span>
-                        <span><i class="fas fa-wool"></i> Milk & Cheese </span>
-                    </div>
+                    <div class="category-stats"><span><i class="fas fa-sheep"></i> 20 Sheep</span><span><i class="fas fa-wool"></i> Milk & Cheese</span></div>
                 </div>
             </div>
-
             <!-- Goats -->
             <div class="category-card" data-animal="goats">
-                <div class="category-icon">
-                    <i class="fas fa-cloud-meatball"></i>
-                </div>
+                <div class="category-icon"><i class="fas fa-cloud-meatball"></i></div>
                 <img src="photo-1560819400-434c188f63ef.jpeg" alt="Goats at Chifwema Farm">
                 <div class="category-content">
                     <h3>Goats</h3>
                     <p>Our 30 local indigenous Zambian goats are known for their friendly personalities and excellent milk production.</p>
-                    <div class="category-stats">
-                        <span><i class="fas fa-cloud-meatball"></i> 30 Goats</span>
-                        <span><i class="fas fa-wine-bottle"></i> Milk & Cheese</span>
-                    </div>
+                    <div class="category-stats"><span><i class="fas fa-cloud-meatball"></i> 30 Goats</span><span><i class="fas fa-wine-bottle"></i> Milk & Cheese</span></div>
                 </div>
             </div>
-
-			             <!-- Maize -->
+            <!-- Maize -->
             <div class="category-card" data-animal="maize">
-                <div class="category-icon">
-                    <i class="fas fa-seedling"></i>
-                </div>
+                <div class="category-icon"><i class="fas fa-seedling"></i></div>
                 <img src="photo-1649251037465-72c9d378acb6.jpeg" alt="Maize field at Chifwema Farm">
                 <div class="category-content">
                     <h3>Maize Fields</h3>
                     <p>Our 50 acre maize field is cultivated using sustainable methods, providing feed for our animals and local community.</p>
-                    <div class="category-stats">
-                        <span><i class="fas fa-ruler"></i> 50 Acres</span>
-                        <span><i class="fas fa-leaf"></i> Sustainable</span>
-                    </div>
+                    <div class="category-stats"><span><i class="fas fa-ruler"></i> 50 Acres</span><span><i class="fas fa-leaf"></i> Sustainable</span></div>
                 </div>
             </div>
-            
-		
-		<!-- Chicken -->
+            <!-- Chicken -->
             <div class="category-card" data-animal="Chicken">
-                <div class="category-icon">
-                    <i class="fas fa-seedling"></i>
-                </div>
+                <div class="category-icon"><i class="fas fa-seedling"></i></div>
                 <img src="Chicken.jpeg" alt="Our chickens at Chifwema Farm">
                 <div class="category-content">
                     <h3>Health Chickens</h3>
                     <p>Our local Zambian chickens produces high quality meat and eggs.</p>
-                    <div class="category-stats">
-
-                        <span><i class="fas fa-leaf"></i> Sustainable</span>
-                    </div>
+                    <div class="category-stats"><span><i class="fas fa-leaf"></i> Sustainable</span></div>
                 </div>
             </div>
-        
-
-			  
-			
-			<!-- Tomatoes-->
+            <!-- Tomatoes-->
             <div class="category-card" data-animal="Tomatoes">
-                <div class="category-icon">
-                    <i class="fas fa-seedling"></i>
-                </div>
+                <div class="category-icon"><i class="fas fa-seedling"></i></div>
                 <img src="Tomato-Plant-2048x1365 (1).jpeg" alt="Our Tomatoes at Chifwema Farm">
                 <div class="category-content">
                     <h3>Fresh Tomatoes</h3>
                     <p>our freshly ripe and ready tomatoes 🍅</p>
-                    <div class="category-stats">
-
-                        <span><i class="fas fa-leaf"></i> Sustainable</span>
-                    </div>
+                    <div class="category-stats"><span><i class="fas fa-leaf"></i> Sustainable</span></div>
                 </div>
             </div>
-			
-        <!-- Mangos-->
+            <!-- Mangos-->
             <div class="category-card" data-animal="Mangos">
-                <div class="category-icon">
-                    <i class="fas fa-seedling"></i>
-                </div>
+                <div class="category-icon"><i class="fas fa-seedling"></i></div>
                 <img src="mangos1-feature-960x720-1.jpg" alt="Our Mongos at Chifwema Farm">
                 <div class="category-content">
                     <h3>Fresh Mangos</h3>
-                    <p>Our ripe and juicy mangos are freshly harvested from Chifwema Farm Perfect for snacking, adding to salads, or blending into a refreshing smoothie. </p>
-                    <div class="category-stats">
-
-                        <span><i class="fas fa-leaf"></i> Sustainable</span>
-                    </div>
+                    <p>Our ripe and juicy mangos are freshly harvested from Chifwema Farm Perfect for snacking, adding to salads, or blending into a refreshing smoothie.</p>
+                    <div class="category-stats"><span><i class="fas fa-leaf"></i> Sustainable</span></div>
                 </div>
             </div>
-		
             <!-- Cows -->
             <div class="category-card" data-animal="cows">
-                <div class="category-icon">
-                    <i class="fas fa-cow"></i>
-                </div>
+                <div class="category-icon"><i class="fas fa-cow"></i></div>
                 <img src="Brahman.jpeg" alt="Cows at Chifwema Farm">
                 <div class="category-content">
                     <h3>Cows</h3>
                     <p>Our herd of 25 Brahman cattle graze on our chemical free pastures, producing rich milk daily.</p>
-                    <div class="category-stats">
-                        <span><i class="fas fa-cow"></i> 25 Cows</span>
-                        <span><i class="fas fa-glass-whiskey"></i> Dairy Products</span>
-                    </div>
+                    <div class="category-stats"><span><i class="fas fa-cow"></i> 25 Cows</span><span><i class="fas fa-glass-whiskey"></i> Dairy Products</span></div>
                 </div>
             </div>
-
-			<!-- onion -->
+            <!-- onion -->
             <div class="category-card" data-animal="onion">
-                <div class="category-icon">
-                    <i class="fas fa-seedling"></i>
-                </div>
+                <div class="category-icon"><i class="fas fa-seedling"></i></div>
                 <img src="Freshly_harvested_onions_dp135201128_dnoh.jpg" alt="onion at Chifwema Farm">
                 <div class="category-content">
                     <h3>Fresh Onions</h3>
                     <p>These layers of goodness are perfect for adding depth to your favorite dishes, from stews to salads. Grown with care, our onions are a must have in every kitchen 🧅.</p>
-                    <div class="category-stats">
-                        <span><i class="fas fa-ruler"></i>Fresh onions</span>
-                        <span><i class="fas fa-leaf"></i> Sustainable</span>
-                    </div>
+                    <div class="category-stats"><span><i class="fas fa-ruler"></i>Fresh onions</span><span><i class="fas fa-leaf"></i> Sustainable</span></div>
                 </div>
             </div>
-
-			<!-- Cabbage-->
+            <!-- Cabbage-->
             <div class="category-card" data-animal="cabbage">
-                <div class="category-icon">
-                    <i class="fas fa-seedling"></i>
-                </div>
+                <div class="category-icon"><i class="fas fa-seedling"></i></div>
                 <img src="cabbage.jpeg" alt="Cabbage at Chifwema Farm">
                 <div class="category-content">
                     <h3>Fresh Cabbages</h3>
                     <p>This is a fresh cabbage, straight from our Chifwema Farm, where quality and freshness are our top priority.</p>
-                    <div class="category-stats">
-                        <span><i class="fas fa-ruler"></i>Fresh Cabbage</span>
-                        <span><i class="fas fa-leaf"></i> Sustainable</span>
-                    </div>
+                    <div class="category-stats"><span><i class="fas fa-ruler"></i>Fresh Cabbage</span><span><i class="fas fa-leaf"></i> Sustainable</span></div>
                 </div>
             </div>
-
-			<!-- WaterMelon-->
+            <!-- WaterMelon-->
             <div class="category-card" data-animal="watermelon">
-                <div class="category-icon">
-                    <i class="fas fa-seedling"></i>
-                </div>
+                <div class="category-icon"><i class="fas fa-seedling"></i></div>
                 <img src="images.jpg" alt="watermelon at Chifwema Farm">
                 <div class="category-content">
                     <h3>Fresh Watermelon</h3>
-                    <p>Meet our juicy and refreshing watermelon, straight from our Chifwema Farm Bursting with flavor and nutrients 🍉
- .</p>
-                    <div class="category-stats">
-                        <span><i class="fas fa-ruler"></i>Fresh Watermelon</span>
-                        <span><i class="fas fa-leaf"></i> Sustainable</span>
-                    </div>
+                    <p>Meet our juicy and refreshing watermelon, straight from our Chifwema Farm Bursting with flavor and nutrients 🍉</p>
+                    <div class="category-stats"><span><i class="fas fa-ruler"></i>Fresh Watermelon</span><span><i class="fas fa-leaf"></i> Sustainable</span></div>
                 </div>
             </div>
-		</section>
+        </div>
+    </section>
 
     <!-- Interactive Gallery -->
     <section class="gallery-container container" id="gallery">
@@ -783,105 +746,18 @@
             <button class="gallery-btn" data-filter="scenery">Scenery</button>
         </div>
         <div class="gallery-grid">
-            <div class="gallery-item" data-category="animals">
-                <img src="photo-1595543090343-57fbf1762ab1.jpeg" alt="Sheep grazing">
-                <div class="gallery-overlay">
-                    <h4>Sheep Grazing</h4>
-                    <p>Our local Zambian indigenous sheep enjoying the pasture</p>
-                </div>
-            </div>
-
-			<div class="gallery-grid">
-            <div class="gallery-item" data-category="animals">
-                <img src="DSC_4456.jpg" alt="Chicken grazing">
-                <div class="gallery-overlay">
-                    <h4>Our Chickens</h4>
-                    <p>Our chickens are enjoying their free range area</p>
-                </div>
-            </div>
-
-				<div class="gallery-grid">
-            <div class="gallery-item" data-category="crops">
-                <img src="AdobeStock_122166985-435x290.jpeg" alt="watermelons in the garden">
-                <div class="gallery-overlay">
-                    <h4>Our frsh watermelon in the garden</h4>
-                    <p>Our watermelons are thriving in the garden, spreading their vines and filling the air with sweet fragrance </p>
-                </div>
-            </div>
-
-					<div class="gallery-grid">
-            <div class="gallery-item" data-category="crops">
-                <img src="onion-3540502_1280 (1).jpg" alt="Onions">
-                <div class="gallery-overlay">
-                    <h4>Our fresh onion in the garden</h4>
-                    <p>Onions growing strong, adding flavor to your table</p>
-                </div>
-            </div>
-
-						<div class="gallery-grid">
-            <div class="gallery-item" data-category="crops">
-                <img src="cabbage-farm.jpg" alt="Cabbage">
-                <div class="gallery-overlay">
-                    <h4>Our fresh Cabbage in the garden</h4>
-                    <p>Cabbage thriving in the garden, leaves unfolding</p>
-                </div>
-            </div>
-
-							<div class="gallery-grid">
-            <div class="gallery-item" data-category="crops">
-                <img src="Mangoes.jpg" alt="Mangos">
-                <div class="gallery-overlay">
-                    <h4>Our Mangos</h4>
-                    <p>Our mangoes are languishing on the branches, soaking up the warm sunshine and rains. Their sweet aroma fills the air as they ripen to perfection.</p>
-                </div>
-            </div>
-
-								<div class="gallery-grid">
-            <div class="gallery-item" data-category="crops">
-                <img src="Indeterminate-cherry-tomatoes-1536x864.jpeg" alt="Tomatoes">
-                <div class="gallery-overlay">
-                    <h4>Our fresh Tomatoes in the garden</h4>
-                    <p> our tomatoes are ripening on the vine, bursting with flavor and color</p>
-                </div>
-            </div>
-							
-            <div class="gallery-item" data-category="crops">
-                <img src="maize.jpg" alt="Maize field">
-                <div class="gallery-overlay">
-                    <h4>Maize Field</h4>
-                    <p>Maize ready for harvest</p>
-                </div>
-				
-				           
-            </div>
-            <div class="gallery-item" data-category="animals">
-                <img src="g.jpg" alt="Goats on farm">
-                <div class="gallery-overlay">
-                    <h4>Happy Goats</h4>
-                    <p>Our friendly goats exploring the farm</p>
-                </div>
-            </div>
-            <div class="gallery-item" data-category="scenery">
-                <img src="amazing-shot-farmland-with-cows-sunset.jpg" alt="Farm landscape">
-                <div class="gallery-overlay">
-                    <h4>Chifwema Farm</h4>
-                    <p>Beautiful view of our farm landscape</p>
-                </div>
-            </div>
-            <div class="gallery-item" data-category="animals">
-                <img src="PXL_20241120_160507019.jpg" alt="Cows in field">
-                <div class="gallery-overlay">
-                    <h4> Cows</h4>
-                    <p>Our Zebu and Brahman cows grazing peacefully</p>
-                </div>
-            </div>
-            <div class="gallery-item" data-category="scenery">
-                <img src="R.jpeg" alt="Farm at sunrise">
-                <div class="gallery-overlay">
-                    <h4>Morning Sunrise</h4>
-                    <p>The farm at sunrise a beautiful start to the day</p>
-                </div>
-            </div>
+            <div class="gallery-item" data-category="animals"><img src="photo-1595543090343-57fbf1762ab1.jpeg" alt="Sheep grazing"><div class="gallery-overlay"><h4>Sheep Grazing</h4><p>Our local Zambian indigenous sheep enjoying the pasture</p></div></div>
+            <div class="gallery-item" data-category="animals"><img src="DSC_4456.jpg" alt="Chicken grazing"><div class="gallery-overlay"><h4>Our Chickens</h4><p>Our chickens are enjoying their free range area</p></div></div>
+            <div class="gallery-item" data-category="crops"><img src="AdobeStock_122166985-435x290.jpeg" alt="watermelons"><div class="gallery-overlay"><h4>Fresh watermelon</h4><p>Our watermelons are thriving in the garden</p></div></div>
+            <div class="gallery-item" data-category="crops"><img src="onion-3540502_1280 (1).jpg" alt="Onions"><div class="gallery-overlay"><h4>Fresh onions</h4><p>Onions growing strong, adding flavor</p></div></div>
+            <div class="gallery-item" data-category="crops"><img src="cabbage-farm.jpg" alt="Cabbage"><div class="gallery-overlay"><h4>Fresh Cabbage</h4><p>Cabbage thriving in the garden</p></div></div>
+            <div class="gallery-item" data-category="crops"><img src="Mangoes.jpg" alt="Mangos"><div class="gallery-overlay"><h4>Our Mangos</h4><p>Sweet aroma fills the air as they ripen</p></div></div>
+            <div class="gallery-item" data-category="crops"><img src="Indeterminate-cherry-tomatoes-1536x864.jpeg" alt="Tomatoes"><div class="gallery-overlay"><h4>Fresh Tomatoes</h4><p>Ripening on the vine, bursting with flavor</p></div></div>
+            <div class="gallery-item" data-category="crops"><img src="maize.jpg" alt="Maize field"><div class="gallery-overlay"><h4>Maize Field</h4><p>Maize ready for harvest</p></div></div>
+            <div class="gallery-item" data-category="animals"><img src="g.jpg" alt="Goats on farm"><div class="gallery-overlay"><h4>Happy Goats</h4><p>Our friendly goats exploring the farm</p></div></div>
+            <div class="gallery-item" data-category="scenery"><img src="amazing-shot-farmland-with-cows-sunset.jpg" alt="Farm landscape"><div class="gallery-overlay"><h4>Chifwema Farm</h4><p>Beautiful view of our farm landscape</p></div></div>
+            <div class="gallery-item" data-category="animals"><img src="PXL_20241120_160507019.jpg" alt="Cows in field"><div class="gallery-overlay"><h4>Cows</h4><p>Our Zebu and Brahman cows grazing peacefully</p></div></div>
+            <div class="gallery-item" data-category="scenery"><img src="R.jpeg" alt="Farm at sunrise"><div class="gallery-overlay"><h4>Morning Sunrise</h4><p>The farm at sunrise a beautiful start to the day</p></div></div>
         </div>
     </section>
 
@@ -889,30 +765,16 @@
     <section class="farm-info container" id="about">
         <h2 class="section-title">About Our Farm</h2>
         <div class="info-grid">
-            <div class="info-image">
-                <img src="pexels-gu-bra-11680150-14816344.jpg" alt="Chifwema Farmoverview">
-            </div>
+            <div class="info-image"><img src="pexels-gu-bra-11680150-14816344.jpg" alt="Chifwema Farm overview"></div>
             <div class="info-content">
                 <h3>Sustainable Farming Since 2022</h3>
                 <p>Chifwema Farm is a family owned and operated farm dedicated to sustainable agriculture and animal welfare. For over 4 years, we've been cultivating our land with respect for nature and dedication to quality.</p>
                 <p>Our farm spans 100 acres of lush pastures, crop fields, and natural habitats. We believe in working with nature, not against it, which is why we practice crop rotation, natural pest management, and humane animal care.</p>
                 <div class="info-stats">
-                    <div class="stat-item">
-                        <span class="stat-value">100</span>
-                        <span class="stat-label">Total Acres</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">75</span>
-                        <span class="stat-label">Animals</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">4+</span>
-                        <span class="stat-label">Years in Operation</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">12</span>
-                        <span class="stat-label">Crop Varieties</span>
-                    </div>
+                    <div class="stat-item"><span class="stat-value">100</span><span class="stat-label">Total Acres</span></div>
+                    <div class="stat-item"><span class="stat-value">75</span><span class="stat-label">Animals</span></div>
+                    <div class="stat-item"><span class="stat-value">4+</span><span class="stat-label">Years in Operation</span></div>
+                    <div class="stat-item"><span class="stat-value">12</span><span class="stat-label">Crop Varieties</span></div>
                 </div>
             </div>
         </div>
@@ -922,272 +784,55 @@
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Chifwema Farm</h3>
-                    <p>A showcase of sustainable farming and harmonious agricultural life. Visit us to experience farm living at its best.</p>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#showcase">Farm Showcase</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#about">About Our Farm</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Info</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i>Chifwema Area, Kafue Zambia</li>
-                        <li><i class="fas fa-phone"></i>+260977465444</li>
-                        <li><i class="fas fa-envelope"></i> yndambwa@gmail.com</li>
-                        <li><i class="fas fa-clock"></i> Open for visits: Mon-Sun 09:00-16:00</li>
-                    </ul>
-                </div>
+                <div class="footer-column"><h3>Chifwema Farm</h3><p>A showcase of sustainable farming and harmonious agricultural life. Visit us to experience farm living at its best.</p><div class="social-icons"><a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-icon"><i class="fab fa-instagram"></i></a><a href="#" class="social-icon"><i class="fab fa-twitter"></i></a><a href="#" class="social-icon"><i class="fab fa-youtube"></i></a></div></div>
+                <div class="footer-column"><h3>Quick Links</h3><ul class="footer-links"><li><a href="#home">Home</a></li><li><a href="#showcase">Farm Showcase</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#about">About Our Farm</a></li></ul></div>
+                <div class="footer-column"><h3>Contact Info</h3><ul class="footer-links"><li><i class="fas fa-map-marker-alt"></i> Chifwema Area, Kafue Zambia</li><li><i class="fas fa-phone"></i> +260977465444</li><li><i class="fas fa-envelope"></i> yndambwa@gmail.com</li><li><i class="fas fa-clock"></i> Open for visits: Mon-Sun 09:00-16:00</li></ul></div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Chifwema Farm. All rights reserved.</p>
-            </div>
+            <div class="copyright"><p>&copy; 2025 Chifwema Farm. All rights reserved.</p></div>
         </div>
     </footer>
 
-    <!-- Modal for image viewing -->
-    <div class="modal" id="imageModal">
-        <span class="close-modal" id="closeModal">&times;</span>
-        <div class="modal-content">
-            <img id="modalImage" src="" alt="">
-        </div>
-    </div>
+    <div class="modal" id="imageModal"><span class="close-modal" id="closeModal">&times;</span><div class="modal-content"><img id="modalImage" src="" alt=""></div></div>
 
     <script>
-        // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.getElementById('navLinks');
+        mobileMenuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
         
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-        
-        // Gallery filtering
+        // Gallery filter
         const galleryButtons = document.querySelectorAll('.gallery-btn');
         const galleryItems = document.querySelectorAll('.gallery-item');
-        
         galleryButtons.forEach(button => {
             button.addEventListener('click', () => {
-                // Remove active class from all buttons
                 galleryButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
                 button.classList.add('active');
-                
                 const filter = button.getAttribute('data-filter');
-                
-                galleryItems.forEach(item => {
-                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
+                galleryItems.forEach(item => item.style.display = (filter === 'all' || item.getAttribute('data-category') === filter) ? 'block' : 'none');
             });
         });
         
-        // Image modal functionality
         const modal = document.getElementById('imageModal');
         const modalImage = document.getElementById('modalImage');
         const closeModal = document.getElementById('closeModal');
+        document.querySelectorAll('.gallery-item img').forEach(img => img.addEventListener('click', () => { modal.style.display = 'flex'; modalImage.src = img.src; modalImage.alt = img.alt; }));
+        closeModal.addEventListener('click', () => modal.style.display = 'none');
+        modal.addEventListener('click', (e) => { if(e.target === modal) modal.style.display = 'none'; });
         
-        // Add click event to all gallery images
-        document.querySelectorAll('.gallery-item img').forEach(img => {
-            img.addEventListener('click', () => {
-                modal.style.display = 'flex';
-                modalImage.src = img.src;
-                modalImage.alt = img.alt;
-            });
-        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => anchor.addEventListener('click', function(e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if(target) window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' }); }));
         
-        // Close modal when clicking X
-        closeModal.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
+        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; } }); }, { threshold: 0.1 });
+        document.querySelectorAll('.category-card').forEach(card => { card.style.opacity = '0'; card.style.transform = 'translateY(20px)'; card.style.transition = 'opacity 0.5s ease, transform 0.5s ease'; observer.observe(card); });
         
-        // Close modal when clicking outside the image
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Animate farm category cards on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-        
-        // Observe category cards
-        document.querySelectorAll('.category-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(card);
-        });
-        
-        // Interactive farm stats counter
         const statValues = document.querySelectorAll('.stat-value');
         const statsSection = document.querySelector('.info-stats');
-        
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    statValues.forEach(stat => {
-                        const target = parseInt(stat.textContent);
-                        let current = 0;
-                        const increment = target / 50;
-                        
-                        const updateCounter = () => {
-                            if (current < target) {
-                                current += increment;
-                                stat.textContent = Math.ceil(current);
-                                setTimeout(updateCounter, 30);
-                            } else {
-                                stat.textContent = target;
-                            }
-                        };
-                        
-                        updateCounter();
-                    });
-                    
-                    // Stop observing after animation runs
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-        
-        if (statsSection) {
+        if(statsSection) {
+            const statsObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting) { statValues.forEach(stat => { const target = parseInt(stat.textContent); let current = 0; const increment = target / 50; const update = () => { if(current < target) { current += increment; stat.textContent = Math.ceil(current); setTimeout(update, 30); } else stat.textContent = target; }; update(); }); statsObserver.unobserve(entry.target); } }); }, { threshold: 0.5 });
             statsObserver.observe(statsSection);
         }
         
-        // Highlight active nav link based on scroll position
-        const sections = document.querySelectorAll('section, footer');
-        const navLinksAll = document.querySelectorAll('.nav-links a');
-        
-        window.addEventListener('scroll', () => {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (scrollY >= (sectionTop - 100)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinksAll.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
+        window.addEventListener('scroll', () => { let current = ''; document.querySelectorAll('section, footer').forEach(section => { const top = section.offsetTop; if(scrollY >= top - 100) current = section.getAttribute('id'); }); document.querySelectorAll('.nav-links a').forEach(link => { link.classList.remove('active'); if(link.getAttribute('href') === `#${current}`) link.classList.add('active'); }); });
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -1,1194 +1,530 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>CHIFWEMA FARM </title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-green: #2e7d32;
-            --light-green: #4caf50;
-            --lighter-green: #a5d6a7;
-            --pale-green: #e8f5e9;
-            --white: #ffffff;
-            --off-white: #f9f9f9;
-            --dark-gray: #333333;
-            --light-gray: #e0e0e0;
-            --shadow: rgba(0, 0, 0, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--off-white);
-            color: var(--dark-gray);
-            line-height: 1.6;
-        }
-	
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header & Navigation */
-        header {
-            background-color: var(--white);
-            box-shadow: 0 4px 12px var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-icon {
-            color: var(--primary-green);
-            font-size: 2.5rem;
-        }
-
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-green);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark-gray);
-            font-weight: 600;
-            font-size: 1.1rem;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            background-color: var(--pale-green);
-            color: var(--primary-green);
-        }
-
-        .nav-links a.active {
-            background-color: var(--primary-green);
-            color: var(--white);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            color: var(--primary-green);
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(46, 125, 50, 0.9), rgba(46, 125, 50, 0.8)), url('cabbage.jpeg');
-            background-size: cover;
-            background-position: center;
-            color: var(--white);
-            text-align: center;
-            padding: 100px 20px;
-            border-radius: 0 0 30px 30px;
-            margin-bottom: 60px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: var(--white);
-            color: var(--primary-green);
-            padding: 15px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-        }
-
-        /* Farm Showcase */
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            color: var(--primary-green);
-            font-size: 2.5rem;
-            position: relative;
-        }
-
-        .section-title:after {
-            content: '';
-            position: absolute;
-            width: 100px;
-            height: 4px;
-            background-color: var(--light-green);
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .farm-categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 80px;
-        }
-
-        .category-card {
-            background-color: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px var(--shadow);
-            transition: all 0.4s ease;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .category-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .category-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .category-content {
-            padding: 25px;
-        }
-
-        .category-content h3 {
-            color: var(--primary-green);
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-
-        .category-content p {
-            color: var(--dark-gray);
-            margin-bottom: 20px;
-        }
-
-        .category-stats {
-            display: flex;
-            justify-content: space-between;
-            color: var(--light-green);
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .category-icon {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--white);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--primary-green);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Interactive Gallery */
-        .gallery-container {
-            margin-bottom: 80px;
-        }
-
-        .gallery-controls {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .gallery-btn {
-            background-color: var(--white);
-            border: 2px solid var(--light-green);
-            color: var(--primary-green);
-            padding: 10px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .gallery-btn:hover, .gallery-btn.active {
-            background-color: var(--light-green);
-            color: var(--white);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .gallery-item {
-            border-radius: 10px;
-            overflow: hidden;
-            height: 250px;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            color: var(--white);
-            padding: 20px;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
-        }
-
-        /* Farm Info Section */
-        .farm-info {
-            background-color: var(--white);
-            padding: 60px 20px;
-            border-radius: 30px;
-            margin-bottom: 80px;
-            box-shadow: 0 10px 30px var(--shadow);
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            align-items: center;
-        }
-
-        .info-image {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .info-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .info-image:hover img {
-            transform: scale(1.05);
-        }
-
-        .info-content h3 {
-            color: var(--primary-green);
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .info-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .stat-item {
-            background-color: var(--pale-green);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-green);
-            display: block;
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            color: var(--dark-gray);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary-green);
-            color: var(--white);
-            padding: 60px 20px 30px;
-            border-radius: 30px 30px 0 0;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-column h3 {
-            font-size: 1.5rem;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-column h3:after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 3px;
-            background-color: var(--light-green);
-            bottom: 0;
-            left: 0;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 15px;
-        }
-
-        .footer-links a {
-            color: var(--lighter-green);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--white);
-            padding-left: 5px;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-icon:hover {
-            background-color: var(--light-green);
-            transform: translateY(-5px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--lighter-green);
-            font-size: 0.9rem;
-        }
-
-        /* Modal for image viewing */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .modal-content img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: var(--white);
-            font-size: 3rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .close-modal:hover {
-            color: var(--light-green);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--white);
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 10px 15px var(--shadow);
-                border-radius: 0 0 15px 15px;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .farm-categories {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero {
-                padding: 70px 20px;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .cta-button {
-                padding: 12px 30px;
-                font-size: 1rem;
-            }
-
-            .info-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Yusuf Ndambwa | Personal Portfolio</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0f2a;
+      color: #e2e8f0;
+      line-height: 1.5;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f142e;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2d3b8f;
+      border-radius: 10px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.8rem;
+    }
+
+    header {
+      background: rgba(8, 12, 30, 0.95);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #1e2a5e;
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #60a5fa, #818cf8, #c084fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #cbd5e6;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #60a5fa;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(100deg, #2563eb, #4f46e5);
+      color: white;
+      padding: 0.8rem 1.8rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 14px rgba(37, 99, 235, 0.3);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 20px -8px #2563eb;
+    }
+
+    .hero {
+      padding: 4rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .hero-content {
+      flex: 1.2;
+    }
+
+    .hero-badge {
+      background: #1e2a5e;
+      color: #a5b4fc;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #c7d2fe, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: #94a3b8;
+      margin: 1rem 0 1.8rem;
+      max-width: 550px;
+    }
+
+    .chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin: 1.5rem 0;
+    }
+
+    .chip {
+      background: #11172e;
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border: 1px solid #2d3b6e;
+      color: #cbd5e1;
+    }
+
+    .avatar {
+      flex: 0.8;
+      text-align: center;
+    }
+
+    .profile-frame {
+      width: 260px;
+      height: 260px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #1e2a5e, #0f172a);
+      padding: 5px;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
+    }
+
+    .profile-pic {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #3b82f6;
+      background: #0f172a;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .skill-card {
+      background: #11182f;
+      border-radius: 1.2rem;
+      padding: 0.8rem 1.4rem;
+      font-weight: 500;
+      border: 1px solid #2d3b6e;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #cbd5f0;
+    }
+
+    .skill-card i {
+      font-size: 1.2rem;
+      color: #60a5fa;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      border-color: #3b82f6;
+      background: #0f1a3a;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+      background: linear-gradient(120deg, #a5b4fc, #60a5fa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .project-card {
+      background: #0f172fe6;
+      backdrop-filter: blur(2px);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      transition: 0.25s;
+      border: 1px solid #1e2a5e;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .project-card:hover {
+      background: #121b3b;
+      transform: translateY(-6px);
+      border-color: #3b82f6;
+    }
+
+    .project-icon {
+      font-size: 2rem;
+      background: linear-gradient(135deg, #60a5fa, #c084fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .project-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .project-tech span {
+      background: #1e2a5e;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #a5b4fc;
+    }
+
+    .interest-card {
+      background: linear-gradient(125deg, #0f1735, #0b1127);
+      border-radius: 2rem;
+      padding: 1.8rem;
+      margin: 2rem 0;
+      text-align: center;
+      border: 1px solid #2d3b6e;
+    }
+
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      background: #0d1330;
+      border-radius: 3rem;
+      padding: 1.8rem;
+      margin: 2rem 0;
+      border: 1px solid #1e2a5e;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: #111a3a;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      text-decoration: none;
+      color: #e2e8f0;
+      font-weight: 500;
+      transition: 0.2s;
+      border: 1px solid #2d3b6e;
+      font-size: 1rem;
+    }
+
+    .contact-item i {
+      font-size: 1.3rem;
+      color: #60a5fa;
+    }
+
+    .contact-item:hover {
+      background: #2563eb;
+      color: white;
+      transform: scale(1.02);
+      border-color: #60a5fa;
+    }
+    .contact-item:hover i {
+      color: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #1e2a5e;
+      margin-top: 2rem;
+      color: #7e8ba3;
+    }
+
+    @media (max-width: 750px) {
+      .hero-grid {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .nav-bar {
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .contact-item {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <i class="fas fa-tractor logo-icon"></i>
-		<img src="IMG-20251210-WA0004.jpg" alt="Chifwema farm logo" width="100" height"70">		
-                <span class="logo-text">Chifwema Farm</span>
-            </div>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <nav class="nav-links" id="navLinks">
-                <a href="#home" class="active">Home</a>
-                <a href="#showcase">Farm Showcase</a>
-                <a href="#gallery">Gallery</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-		
-            <h1>Welcome to Chifwema Farm Website</h1>
-            <p>A sustainable, family owned farm showcasing the beauty of agricultural life. Explore our animals, crops, and the natural harmony of farm living.</p>
-            <a href="#showcase" class="cta-button">Explore Our Farm</a>
-        </div>
-    </section>
-    <marquee>This website is under Construction.</marquee>
-
-    <section class="container" id="showcase">
-        <h2 class="section-title">Farm Showcase</h2>
-        <div class="farm-categories">
-            <!-- Sheep -->
-            <div class="category-card" data-animal="sheep">
-                <div class="category-icon">
-                    <i class="fas fa-cloud"></i>
-                </div>
-                <img src="photo-1595543090343-57fbf1762ab1.jpeg" alt="Sheep at Chifwema Farm">
-                <div class="category-content">
-                    <h3>Sheep</h3>
-                    <p>Our flock of 20 local indigenous Zambian sheep graze freely across our lush pastures, producing high quality meat and lamb.</p>
-                    <div class="category-stats">
-                        <span><i class="fas fa-sheep"></i> 20 Sheep</span>
-                        <span><i class="fas fa-wool"></i> Milk & Cheese </span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Goats -->
-            <div class="category-card" data-animal="goats">
-                <div class="category-icon">
-                    <i class="fas fa-cloud-meatball"></i>
-                </div>
-                <img src="photo-1560819400-434c188f63ef.jpeg" alt="Goats at Chifwema Farm">
-                <div class="category-content">
-                    <h3>Goats</h3>
-                    <p>Our 30 local indigenous Zambian goats are known for their friendly personalities and excellent milk production.</p>
-                    <div class="category-stats">
-                        <span><i class="fas fa-cloud-meatball"></i> 30 Goats</span>
-                        <span><i class="fas fa-wine-bottle"></i> Milk & Cheese</span>
-                    </div>
-                </div>
-            </div>
-
-			             <!-- Maize -->
-            <div class="category-card" data-animal="maize">
-                <div class="category-icon">
-                    <i class="fas fa-seedling"></i>
-                </div>
-                <img src="photo-1649251037465-72c9d378acb6.jpeg" alt="Maize field at Chifwema Farm">
-                <div class="category-content">
-                    <h3>Maize Fields</h3>
-                    <p>Our 50 acre maize field is cultivated using sustainable methods, providing feed for our animals and local community.</p>
-                    <div class="category-stats">
-                        <span><i class="fas fa-ruler"></i> 50 Acres</span>
-                        <span><i class="fas fa-leaf"></i> Sustainable</span>
-                    </div>
-                </div>
-            </div>
-            
-		
-		<!-- Chicken -->
-            <div class="category-card" data-animal="Chicken">
-                <div class="category-icon">
-                    <i class="fas fa-seedling"></i>
-                </div>
-                <img src="Chicken.jpeg" alt="Our chickens at Chifwema Farm">
-                <div class="category-content">
-                    <h3>Health Chickens</h3>
-                    <p>Our local Zambian chickens produces high quality meat and eggs.</p>
-                    <div class="category-stats">
-
-                        <span><i class="fas fa-leaf"></i> Sustainable</span>
-                    </div>
-                </div>
-            </div>
-        
-
-			  
-			
-			<!-- Tomatoes-->
-            <div class="category-card" data-animal="Tomatoes">
-                <div class="category-icon">
-                    <i class="fas fa-seedling"></i>
-                </div>
-                <img src="Tomato-Plant-2048x1365 (1).jpeg" alt="Our Tomatoes at Chifwema Farm">
-                <div class="category-content">
-                    <h3>Fresh Tomatoes</h3>
-                    <p>our freshly ripe and ready tomatoes 🍅</p>
-                    <div class="category-stats">
-
-                        <span><i class="fas fa-leaf"></i> Sustainable</span>
-                    </div>
-                </div>
-            </div>
-			
-        <!-- Mangos-->
-            <div class="category-card" data-animal="Mangos">
-                <div class="category-icon">
-                    <i class="fas fa-seedling"></i>
-                </div>
-                <img src="mangos1-feature-960x720-1.jpg" alt="Our Mongos at Chifwema Farm">
-                <div class="category-content">
-                    <h3>Fresh Mangos</h3>
-                    <p>Our ripe and juicy mangos are freshly harvested from Chifwema Farm Perfect for snacking, adding to salads, or blending into a refreshing smoothie. </p>
-                    <div class="category-stats">
-
-                        <span><i class="fas fa-leaf"></i> Sustainable</span>
-                    </div>
-                </div>
-            </div>
-		
-            <!-- Cows -->
-            <div class="category-card" data-animal="cows">
-                <div class="category-icon">
-                    <i class="fas fa-cow"></i>
-                </div>
-                <img src="Brahman.jpeg" alt="Cows at Chifwema Farm">
-                <div class="category-content">
-                    <h3>Cows</h3>
-                    <p>Our herd of 25 Brahman cattle graze on our chemical free pastures, producing rich milk daily.</p>
-                    <div class="category-stats">
-                        <span><i class="fas fa-cow"></i> 25 Cows</span>
-                        <span><i class="fas fa-glass-whiskey"></i> Dairy Products</span>
-                    </div>
-                </div>
-            </div>
-
-			<!-- onion -->
-            <div class="category-card" data-animal="onion">
-                <div class="category-icon">
-                    <i class="fas fa-seedling"></i>
-                </div>
-                <img src="Freshly_harvested_onions_dp135201128_dnoh.jpg" alt="onion at Chifwema Farm">
-                <div class="category-content">
-                    <h3>Fresh Onions</h3>
-                    <p>These layers of goodness are perfect for adding depth to your favorite dishes, from stews to salads. Grown with care, our onions are a must have in every kitchen 🧅.</p>
-                    <div class="category-stats">
-                        <span><i class="fas fa-ruler"></i>Fresh onions</span>
-                        <span><i class="fas fa-leaf"></i> Sustainable</span>
-                    </div>
-                </div>
-            </div>
-
-			<!-- Cabbage-->
-            <div class="category-card" data-animal="cabbage">
-                <div class="category-icon">
-                    <i class="fas fa-seedling"></i>
-                </div>
-                <img src="cabbage.jpeg" alt="Cabbage at Chifwema Farm">
-                <div class="category-content">
-                    <h3>Fresh Cabbages</h3>
-                    <p>This is a fresh cabbage, straight from our Chifwema Farm, where quality and freshness are our top priority.</p>
-                    <div class="category-stats">
-                        <span><i class="fas fa-ruler"></i>Fresh Cabbage</span>
-                        <span><i class="fas fa-leaf"></i> Sustainable</span>
-                    </div>
-                </div>
-            </div>
-
-			<!-- WaterMelon-->
-            <div class="category-card" data-animal="watermelon">
-                <div class="category-icon">
-                    <i class="fas fa-seedling"></i>
-                </div>
-                <img src="images.jpg" alt="watermelon at Chifwema Farm">
-                <div class="category-content">
-                    <h3>Fresh Watermelon</h3>
-                    <p>Meet our juicy and refreshing watermelon, straight from our Chifwema Farm Bursting with flavor and nutrients 🍉
- .</p>
-                    <div class="category-stats">
-                        <span><i class="fas fa-ruler"></i>Fresh Watermelon</span>
-                        <span><i class="fas fa-leaf"></i> Sustainable</span>
-                    </div>
-                </div>
-            </div>
-		</section>
-
-    <!-- Interactive Gallery -->
-    <section class="gallery-container container" id="gallery">
-        <h2 class="section-title">Farm Gallery</h2>
-        <div class="gallery-controls">
-            <button class="gallery-btn active" data-filter="all">All</button>
-            <button class="gallery-btn" data-filter="animals">Animals</button>
-            <button class="gallery-btn" data-filter="crops">Crops</button>
-            <button class="gallery-btn" data-filter="scenery">Scenery</button>
-        </div>
-        <div class="gallery-grid">
-            <div class="gallery-item" data-category="animals">
-                <img src="photo-1595543090343-57fbf1762ab1.jpeg" alt="Sheep grazing">
-                <div class="gallery-overlay">
-                    <h4>Sheep Grazing</h4>
-                    <p>Our local Zambian indigenous sheep enjoying the pasture</p>
-                </div>
-            </div>
-
-			<div class="gallery-grid">
-            <div class="gallery-item" data-category="animals">
-                <img src="DSC_4456.jpg" alt="Chicken grazing">
-                <div class="gallery-overlay">
-                    <h4>Our Chickens</h4>
-                    <p>Our chickens are enjoying their free range area</p>
-                </div>
-            </div>
-
-				<div class="gallery-grid">
-            <div class="gallery-item" data-category="crops">
-                <img src="AdobeStock_122166985-435x290.jpeg" alt="watermelons in the garden">
-                <div class="gallery-overlay">
-                    <h4>Our frsh watermelon in the garden</h4>
-                    <p>Our watermelons are thriving in the garden, spreading their vines and filling the air with sweet fragrance </p>
-                </div>
-            </div>
-
-					<div class="gallery-grid">
-            <div class="gallery-item" data-category="crops">
-                <img src="onion-3540502_1280 (1).jpg" alt="Onions">
-                <div class="gallery-overlay">
-                    <h4>Our fresh onion in the garden</h4>
-                    <p>Onions growing strong, adding flavor to your table</p>
-                </div>
-            </div>
-
-						<div class="gallery-grid">
-            <div class="gallery-item" data-category="crops">
-                <img src="cabbage-farm.jpg" alt="Cabbage">
-                <div class="gallery-overlay">
-                    <h4>Our fresh Cabbage in the garden</h4>
-                    <p>Cabbage thriving in the garden, leaves unfolding</p>
-                </div>
-            </div>
-
-							<div class="gallery-grid">
-            <div class="gallery-item" data-category="crops">
-                <img src="Mangoes.jpg" alt="Mangos">
-                <div class="gallery-overlay">
-                    <h4>Our Mangos</h4>
-                    <p>Our mangoes are languishing on the branches, soaking up the warm sunshine and rains. Their sweet aroma fills the air as they ripen to perfection.</p>
-                </div>
-            </div>
-
-								<div class="gallery-grid">
-            <div class="gallery-item" data-category="crops">
-                <img src="Indeterminate-cherry-tomatoes-1536x864.jpeg" alt="Tomatoes">
-                <div class="gallery-overlay">
-                    <h4>Our fresh Tomatoes in the garden</h4>
-                    <p> our tomatoes are ripening on the vine, bursting with flavor and color</p>
-                </div>
-            </div>
-							
-            <div class="gallery-item" data-category="crops">
-                <img src="maize.jpg" alt="Maize field">
-                <div class="gallery-overlay">
-                    <h4>Maize Field</h4>
-                    <p>Maize ready for harvest</p>
-                </div>
-				
-				           
-            </div>
-            <div class="gallery-item" data-category="animals">
-                <img src="g.jpg" alt="Goats on farm">
-                <div class="gallery-overlay">
-                    <h4>Happy Goats</h4>
-                    <p>Our friendly goats exploring the farm</p>
-                </div>
-            </div>
-            <div class="gallery-item" data-category="scenery">
-                <img src="amazing-shot-farmland-with-cows-sunset.jpg" alt="Farm landscape">
-                <div class="gallery-overlay">
-                    <h4>Chifwema Farm</h4>
-                    <p>Beautiful view of our farm landscape</p>
-                </div>
-            </div>
-            <div class="gallery-item" data-category="animals">
-                <img src="PXL_20241120_160507019.jpg" alt="Cows in field">
-                <div class="gallery-overlay">
-                    <h4> Cows</h4>
-                    <p>Our Zebu and Brahman cows grazing peacefully</p>
-                </div>
-            </div>
-            <div class="gallery-item" data-category="scenery">
-                <img src="R.jpeg" alt="Farm at sunrise">
-                <div class="gallery-overlay">
-                    <h4>Morning Sunrise</h4>
-                    <p>The farm at sunrise a beautiful start to the day</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Farm Info -->
-    <section class="farm-info container" id="about">
-        <h2 class="section-title">About Our Farm</h2>
-        <div class="info-grid">
-            <div class="info-image">
-                <img src="pexels-gu-bra-11680150-14816344.jpg" alt="Chifwema Farmoverview">
-            </div>
-            <div class="info-content">
-                <h3>Sustainable Farming Since 2022</h3>
-                <p>Chifwema Farm is a family owned and operated farm dedicated to sustainable agriculture and animal welfare. For over 4 years, we've been cultivating our land with respect for nature and dedication to quality.</p>
-                <p>Our farm spans 100 acres of lush pastures, crop fields, and natural habitats. We believe in working with nature, not against it, which is why we practice crop rotation, natural pest management, and humane animal care.</p>
-                <div class="info-stats">
-                    <div class="stat-item">
-                        <span class="stat-value">100</span>
-                        <span class="stat-label">Total Acres</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">75</span>
-                        <span class="stat-label">Animals</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">4+</span>
-                        <span class="stat-label">Years in Operation</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">12</span>
-                        <span class="stat-label">Crop Varieties</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Chifwema Farm</h3>
-                    <p>A showcase of sustainable farming and harmonious agricultural life. Visit us to experience farm living at its best.</p>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#showcase">Farm Showcase</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#about">About Our Farm</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Info</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i>Chifwema Area, Kafue Zambia</li>
-                        <li><i class="fas fa-phone"></i>+260977465444</li>
-                        <li><i class="fas fa-envelope"></i> yndambwa@gmail.com</li>
-                        <li><i class="fas fa-clock"></i> Open for visits: Mon-Sun 09:00-16:00</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 Chifwema Farm. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Modal for image viewing -->
-    <div class="modal" id="imageModal">
-        <span class="close-modal" id="closeModal">&times;</span>
-        <div class="modal-content">
-            <img id="modalImage" src="" alt="">
-        </div>
+<header>
+  <div class="container">
+    <div class="nav-bar">
+      <div class="logo">YUSUF NDAMBWA · IT PORTFOLIO</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#interests">Interests</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
+  </div>
+</header>
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-        
-        // Gallery filtering
-        const galleryButtons = document.querySelectorAll('.gallery-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        
-        galleryButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                galleryButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                button.classList.add('active');
-                
-                const filter = button.getAttribute('data-filter');
-                
-                galleryItems.forEach(item => {
-                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-        
-        // Image modal functionality
-        const modal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
-        const closeModal = document.getElementById('closeModal');
-        
-        // Add click event to all gallery images
-        document.querySelectorAll('.gallery-item img').forEach(img => {
-            img.addEventListener('click', () => {
-                modal.style.display = 'flex';
-                modalImage.src = img.src;
-                modalImage.alt = img.alt;
-            });
-        });
-        
-        // Close modal when clicking X
-        closeModal.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-        
-        // Close modal when clicking outside the image
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Animate farm category cards on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-        
-        // Observe category cards
-        document.querySelectorAll('.category-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(card);
-        });
-        
-        // Interactive farm stats counter
-        const statValues = document.querySelectorAll('.stat-value');
-        const statsSection = document.querySelector('.info-stats');
-        
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    statValues.forEach(stat => {
-                        const target = parseInt(stat.textContent);
-                        let current = 0;
-                        const increment = target / 50;
-                        
-                        const updateCounter = () => {
-                            if (current < target) {
-                                current += increment;
-                                stat.textContent = Math.ceil(current);
-                                setTimeout(updateCounter, 30);
-                            } else {
-                                stat.textContent = target;
-                            }
-                        };
-                        
-                        updateCounter();
-                    });
-                    
-                    // Stop observing after animation runs
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-        
-        if (statsSection) {
-            statsObserver.observe(statsSection);
+<main>
+  <!-- Hero section with profile picture -->
+  <section id="home">
+    <div class="container hero">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge"><i class="fas fa-code"></i> Software Developer</div>
+          <h1>Yusuf Ndambwa<br><span style="background: linear-gradient(135deg,#60a5fa,#c084fc); -webkit-background-clip:text; background-clip:text; color:transparent;">Building Digital Solutions</span></h1>
+          <p class="hero-desc">Passionate developer skilled in Java, Python, C#, web technologies, database systems, IT law, and software development. Creating meaningful tech that solves real problems.</p>
+          <div class="chip-group">
+            <span class="chip"><i class="fab fa-java"></i> Java</span>
+            <span class="chip"><i class="fab fa-js"></i> JavaScript</span>
+            <span class="chip"><i class="fab fa-python"></i> Python</span>
+            <span class="chip"><i class="fas fa-database"></i> SQL</span>
+            <span class="chip"><i class="fas fa-code"></i> C#</span>
+            <span class="chip"><i class="fab fa-html5"></i> HTML/CSS</span>
+          </div>
+          <a href="#contact" class="btn">📧 Contact Me <i class="fas fa-paper-plane"></i></a>
+        </div>
+        <div class="avatar">
+          <div class="profile-frame">
+            <!-- Replace with your actual image path -->
+            <img class="profile-pic" src="PXL_20240615_140116976.PORTRAIT.jpg" alt="Yusuf Ndambwa" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?background=1e2a5e&color=60a5fa&bold=true&size=260&name=Yusuf+N';">
+            <!-- 
+              TO ADD YOUR REAL PROFILE PICTURE:
+              1. Save your image as "yusuf.jpg" in the same folder
+              2. Replace src above with: "yusuf.jpg"
+            -->
+          </div>
+          <p style="margin-top: 1rem; color:#94a3b8;"><i class="fas fa-map-marker-alt"></i> Lusaka Zambia</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills section -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">⚙️ Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card"><i class="fab fa-java"></i> Java (OOP, Collections)</div>
+        <div class="skill-card"><i class="fab fa-js"></i> JavaScript (ES6)</div>
+        <div class="skill-card"><i class="fab fa-html5"></i> HTML5 & CSS3</div>
+        <div class="skill-card"><i class="fab fa-python"></i> Python (Flask, scripts)</div>
+        <div class="skill-card"><i class="fas fa-code"></i> C# / .NET</div>
+        <div class="skill-card"><i class="fas fa-database"></i> MySQL, PostgreSQL</div>
+        <div class="skill-card"><i class="fas fa-gavel"></i> IT Law & Ethics</div>
+        <div class="skill-card"><i class="fas fa-laptop-code"></i> Software Development</div>
+        <div class="skill-card"><i class="fab fa-react"></i> React Basics</div>
+        <div class="skill-card"><i class="fas fa-cloud"></i> Cloud Fundamentals</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section with YOUR real projects -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">🚀 Featured Projects</h2>
+      <div class="projects-grid">
+        <!-- Procurement Management System -->
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-file-invoice"></i></div>
+          <h3>Procurement Management System</h3>
+          <p>End to end procurement solution featuring vendor management, purchase orders, tender tracking, budget control, and automated approval workflows.</p>
+          <div class="project-tech"><span>Java</span><span>Spring Boot</span><span>MySQL</span><span>React</span></div>
+        </div>
+        <!-- E-Commerce Platform -->
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-shopping-cart"></i></div>
+          <h3>E-Commerce Platform</h3>
+          <p>Full-featured online store with product catalog, shopping cart, user authentication, payment gateway integration, and order management system.</p>
+          <div class="project-tech"><span>Python/Django</span><span>JavaScript</span><span>PostgreSQL</span><span>Stripe API</span></div>
+        </div>
+        <!-- Inventory Management System -->
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-boxes"></i></div>
+          <h3>Inventory Management System</h3>
+          <p>Real-time stock tracking, low-stock alerts, barcode scanning, supplier management, and detailed reporting dashboard.</p>
+          <div class="project-tech"><span>C#</span><span>.NET Core</span><span>SQL Server</span><span>Bootstrap</span></div>
+        </div>
+        <!-- Hospital Management System -->
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-hospital-user"></i></div>
+          <h3>Hospital Management System</h3>
+          <p>Patient registration, appointment scheduling, electronic medical records, billing, and pharmacy management module.</p>
+          <div class="project-tech"><span>Java</span><span>Spring Boot</span><span>MySQL</span><span>Thymeleaf</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interests: IT Law & Software Development -->
+  <section id="interests">
+    <div class="container">
+      <h2 class="section-title">📌 Core Interests</h2>
+      <div class="interest-card">
+        <i class="fas fa-gavel" style="font-size: 2rem; color:#60a5fa;"></i>
+        <h3 style="margin: 0.8rem 0;">IT Law & Cyber Ethics</h3>
+        <p style="max-width: 700px; margin: 0 auto;">Data protection, cybercrime legislation, intellectual property, and ethical computing. I believe technology must be built on a foundation of legal and ethical responsibility.</p>
+      </div>
+      <div class="interest-card">
+        <i class="fas fa-layer-group" style="font-size: 2rem; color:#a78bfa;"></i>
+        <h3 style="margin: 0.8rem 0;">Software Development</h3>
+        <p style="max-width: 700px; margin: 0 auto;">Agile methodologies, version control (Git), testing, design patterns, and clean code. Passionate about building robust, scalable, and maintainable applications.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section with ONLY email and phone number -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">📬 Let's Connect</h2>
+      <div class="contact-flex">
+        <!-- Email link - opens default email client with your email -->
+        <a href="mailto:yndambwa@gmail.com?subject=Portfolio%20Inquiry&body=Hello%20Yusuf%2C%20I%20saw%20your%20portfolio..." class="contact-item">
+          <i class="fas fa-envelope"></i> yndambwa@gmail.com
+        </a>
+        <!-- Phone number - opens dialer on mobile -->
+        <a href="tel:+260977465444" class="contact-item">
+          <i class="fas fa-phone-alt"></i> +260 977 465 444
+        </a>
+      </div>
+      <div style="text-align: center; margin-top: 1rem;">
+        <p><i class="fas fa-map-pin"></i> Zambia | Open for opportunities & collaboration</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2025 Yusuf Ndambwa - Personal IT Portfolio. <i class="fas fa-heart" style="color:#f472b6;"></i></p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.nav-links a, .btn[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId && targetId !== "#" && targetId.startsWith('#')) {
+        e.preventDefault();
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-        
-        // Highlight active nav link based on scroll position
-        const sections = document.querySelectorAll('section, footer');
-        const navLinksAll = document.querySelectorAll('.nav-links a');
-        
-        window.addEventListener('scroll', () => {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (scrollY >= (sectionTop - 100)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinksAll.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
+      }
+    });
+  });
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

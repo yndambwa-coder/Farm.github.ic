@@ -186,6 +186,16 @@
       background: #0f172a;
     }
 
+    .profile-name {
+      margin-top: 1rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #60a5fa, #c084fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
     .skills-grid {
       display: flex;
       flex-wrap: wrap;
@@ -384,8 +394,8 @@
       <div class="hero-grid">
         <div class="hero-content">
           <div class="hero-badge"><i class="fas fa-code"></i> Software Developer</div>
-          <h1>Yusuf Ndambwa<br><span style="background: linear-gradient(135deg,#60a5fa,#c084fc); -webkit-background-clip:text; background-clip:text; color:transparent;">Building Digital Solutions</span></h1>
-          <p class="hero-desc">Passionate developer skilled in Java, Python, C#, web technologies, database systems, IT law, and software development. Creating meaningful tech that solves real problems.</p>
+          <h1>Yusuf Ndambwa<br><span style="background: linear-gradient(135deg,#60a5fa,#c084fc); -webkit-background-clip:text; background-clip:text; color:transparent;"></span></h1>
+          <p class="hero-desc">Passionate developer skilled in Java, Python, C#, web technologies, database systems, IT law, and software development. I am a dedicated IT professional with a strong passion for creating innovative solutions that solve real-world problems. With experience in full-stack development, database management, and system architecture, I strive to deliver high-quality, scalable applications. I am currently pursuing my Bachelor of Science in Information Technology and continuously expanding my knowledge in emerging technologies. I believe in writing clean, maintainable code and building applications that make a positive impact on users' lives.</p>
           <div class="chip-group">
             <span class="chip"><i class="fab fa-java"></i> Java</span>
             <span class="chip"><i class="fab fa-js"></i> JavaScript</span>
@@ -406,7 +416,8 @@
               2. Replace src above with: "yusuf.jpg"
             -->
           </div>
-          <p style="margin-top: 1rem; color:#94a3b8;"><i class="fas fa-map-marker-alt"></i> Lusaka Zambia</p>
+          <div class="profile-name">Yusuf Ndambwa</div>
+          <p style="margin-top: 0.5rem; color:#94a3b8;"><i class="fas fa-map-marker-alt"></i> Lusaka, Zambia</p>
         </div>
       </div>
     </div>
@@ -485,7 +496,7 @@
     </div>
   </section>
 
-  <!-- Contact Section with ONLY email and phone number -->
+  <!-- Contact Section with ONLY email and phone number (WhatsApp link added) -->
   <section id="contact">
     <div class="container">
       <h2 class="section-title">📬 Let's Connect</h2>
@@ -494,9 +505,9 @@
         <a href="mailto:yndambwa@gmail.com?subject=Portfolio%20Inquiry&body=Hello%20Yusuf%2C%20I%20saw%20your%20portfolio..." class="contact-item">
           <i class="fas fa-envelope"></i> yndambwa@gmail.com
         </a>
-        <!-- Phone number - opens dialer on mobile -->
-        <a href="tel:+260977465444" class="contact-item">
-          <i class="fas fa-phone-alt"></i> +260 977 465 444
+        <!-- Phone number with WhatsApp link - opens WhatsApp chat -->
+        <a href="https://wa.me/260977465444?text=Hello%20Yusuf%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20connect!" class="contact-item" target="_blank">
+          <i class="fab fa-whatsapp"></i> +260 977 465 444 (WhatsApp)
         </a>
       </div>
       <div style="text-align: center; margin-top: 1rem;">
